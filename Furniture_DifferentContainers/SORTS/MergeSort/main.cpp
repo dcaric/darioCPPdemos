@@ -15,8 +15,8 @@ using namespace std;
 void merge(vector<int>& vec_a, vector<int>& vec_b, vector<int>& vec_c) {
     int na = vec_a.size();
     int nb = vec_b.size();
-    vec_c.resize(na + nb); // vec_c je sad velicine vec_a plus vec_b
-    int ia = 0, ib = 0, ic = 0;   //indeksi od a,b i c
+    vec_c.resize(na + nb); // Resize vec_c to hold the merged result
+    int ia = 0, ib = 0, ic = 0;
 
     // gradi vec_c sa elementima od vec_a i vec_b tako da uzima
     // najmanji
@@ -24,9 +24,7 @@ void merge(vector<int>& vec_a, vector<int>& vec_b, vector<int>& vec_c) {
         if (vec_a[ia] < vec_b[ib]) {
             vec_c[ic++] = vec_a[ia++];
         } else {
-            vec_c[ic] = vec_b[ib];
-            ic++;
-            ib++;
+            vec_c[ic++] = vec_b[ib++];
         }
     }
 
@@ -81,15 +79,6 @@ void merge_sort(vector<int>& arr) {
     // liste i uzima od najmanjeg do najveceg elementa is pojedine liste
     
     merge(left, right, arr);
-    cout << "* left: ";
-    for (int num : left) {
-        cout << num << " ";
-    }
-    cout << "* right: ";
-    for (int num : right) {
-        cout << num << " ";
-    }
-    
     cout << "Sorted: ";
     for (int num : arr) {
         cout << num << " ";
@@ -98,7 +87,7 @@ void merge_sort(vector<int>& arr) {
 }
 
 
-int mainMerge () {
+int mainMerge() {
     // Example vector to be sorted
     vector<int> arr = {6, 12, 11, 7, 5, 13, 89};
 

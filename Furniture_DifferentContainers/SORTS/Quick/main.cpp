@@ -72,7 +72,7 @@ void quick_sort(vector<int>& arr, int left, int right) {
     quick_sort(arr, j + 1, right);
 }
 
-int mainQuick (){
+int mainQuick() {
     // Example vector to be sorted
     vector<int> arr = {38, 27, 43, 3, 9, 82, 10};
 
