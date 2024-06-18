@@ -1,0 +1,86 @@
+QUESTION:
+How to find sets of 3 numbers who's sum is zero, from the provided list of numbers. Use c++
+Here is a sample c++ code that demonstrates how to find sets of 3 numbers whose sum is zero from a provided list of numbers:
+
+
+ANSWER:
+Copy code
+#include <iostream>
+#include <vector>
+
+int main() {
+    // Declare the list of numbers
+    std::vector<int> numbers = {-1, 2, 3, -2, 0, -3, 4, 5, -5};
+
+    // Loop through the list of numbers
+    for (int i = 0; i < numbers.size(); i++) {
+        for (int j = i + 1; j < numbers.size(); j++) {
+            for (int k = j + 1; k < numbers.size(); k++) {
+                // Check if the sum of the current three numbers is zero
+                if (numbers[i] + numbers[j] + numbers[k] == 0) {
+                    std::cout << numbers[i] << " " << numbers[j] << " " << numbers[k] << std::endl;
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+This code uses a nested for loop to check every combination of 3 numbers in the list, and if the sum of those three numbers is zero, it will print out the 3 numbers.
+
+Note that this code uses a vector to store the list of numbers, but you can use an array or any other data structure as well. Additionally, this code will print out all possible sets of 3 numbers whose sum is zero, but you can modify the code to stop the search once a set is found if you only want to find one set.
+
+
+QUESTION
+Optimise code to have less loops
+
+
+
+
+ANSWER:
+Here is a sample c++ code that demonstrates how to find sets of 3 numbers whose sum is zero from a provided list of numbers using fewer loops:
+
+
+
+Copy code
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    // Declare the list of numbers
+    std::vector<int> numbers = {-1, 2, 3, -2, 0, -3, 4, 5, -5};
+    int n = numbers.size();
+    // sort the array 
+    std::sort(numbers.begin(), numbers.end());
+    // loop through the list of numbers
+    for (int i = 0; i < n-2; i++) {
+        // if the current number is greater than zero, it will not be part of any solution
+        if (numbers[i] > 0) break;
+        // initialize two pointers 
+        int j = i + 1;
+        int k = n - 1;
+        // loop until the two pointers meet
+        while (j < k) {
+            // check if the sum of the current three numbers is zero
+            if (numbers[i] + numbers[j] + numbers[k] == 0) {
+                std::cout << numbers[i] << " " << numbers[j] << " " << numbers[k] << std::endl;
+                j++;
+                k--;
+            }
+            // if the sum is less than zero, increment the pointer j
+            else if (numbers[i] + numbers[j] + numbers[k] < 0) j++;
+            // if the sum is greater than zero, decrement the pointer k
+            else k--;
+        }
+    }
+
+    return 0;
+}
+This code sorts the array of numbers first. Then it uses a single for loop, two pointers and while loop. It reduces the number of loops by a factor of 3 as it only needs to check every combination of 3 numbers once.
+
+It starts with the first element and creates two pointers, one pointing to the next element, and the other pointing to the last element.
+It checks the sum of the numbers pointed by the three pointers(1st element, 2nd pointer and 3rd pointer) and if it's equal to 0, it prints out the numbers, otherwise, it moves the pointer accordingly to find the next solution.
+It breaks the loop when the current element is greater than 0 as it will not be part of any solution.
+
+This is a more optimized solution as it reduces the number of loops by a factor of 3.

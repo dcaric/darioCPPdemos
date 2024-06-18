@@ -1,0 +1,1 @@
+myClass1Object
